@@ -1,0 +1,6 @@
+framework module Pods_MBProgressHUDSwift {
+  umbrella header "Pods-MBProgressHUDSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
