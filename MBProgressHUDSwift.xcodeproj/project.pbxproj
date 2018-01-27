@@ -8,19 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		776B7ACEEA69040A264D8F65 /* Pods_MBProgressHUDSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0041D5465B2890467F3B1B /* Pods_MBProgressHUDSwift.framework */; };
+		C92B3223201C7D6900BE4D13 /* HudsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92B3222201C7D6900BE4D13 /* HudsController.swift */; };
+		C92B3225201C81F500BE4D13 /* HudCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92B3224201C81F500BE4D13 /* HudCell.swift */; };
+		C92B3227201C86B600BE4D13 /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92B3226201C86B600BE4D13 /* Hud.swift */; };
 		C9D05422201B0ADC002AE739 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D05421201B0ADC002AE739 /* AppDelegate.swift */; };
 		C9D05424201B0ADC002AE739 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D05423201B0ADC002AE739 /* ViewController.swift */; };
-		C9D05427201B0ADC002AE739 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D05425201B0ADC002AE739 /* Main.storyboard */; };
 		C9D05429201B0ADC002AE739 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D05428201B0ADC002AE739 /* Assets.xcassets */; };
 		C9D0542C201B0ADC002AE739 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D0542A201B0ADC002AE739 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA63C1E89BCAE7C3384C1D39 /* Pods-MBProgressHUDSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBProgressHUDSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBProgressHUDSwift/Pods-MBProgressHUDSwift.release.xcconfig"; sourceTree = "<group>"; };
+		C92B3222201C7D6900BE4D13 /* HudsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudsController.swift; sourceTree = "<group>"; };
+		C92B3224201C81F500BE4D13 /* HudCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudCell.swift; sourceTree = "<group>"; };
+		C92B3226201C86B600BE4D13 /* Hud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		C9D0541E201B0ADC002AE739 /* MBProgressHUDSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBProgressHUDSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D05421201B0ADC002AE739 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9D05423201B0ADC002AE739 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C9D05426201B0ADC002AE739 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9D05428201B0ADC002AE739 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9D0542B201B0ADC002AE739 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9D0542D201B0ADC002AE739 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,10 +84,12 @@
 			children = (
 				C9D05421201B0ADC002AE739 /* AppDelegate.swift */,
 				C9D05423201B0ADC002AE739 /* ViewController.swift */,
-				C9D05425201B0ADC002AE739 /* Main.storyboard */,
 				C9D05428201B0ADC002AE739 /* Assets.xcassets */,
 				C9D0542A201B0ADC002AE739 /* LaunchScreen.storyboard */,
 				C9D0542D201B0ADC002AE739 /* Info.plist */,
+				C92B3222201C7D6900BE4D13 /* HudsController.swift */,
+				C92B3224201C81F500BE4D13 /* HudCell.swift */,
+				C92B3226201C86B600BE4D13 /* Hud.swift */,
 			);
 			path = MBProgressHUDSwift;
 			sourceTree = "<group>";
@@ -152,7 +158,6 @@
 			files = (
 				C9D0542C201B0ADC002AE739 /* LaunchScreen.storyboard in Resources */,
 				C9D05429201B0ADC002AE739 /* Assets.xcassets in Resources */,
-				C9D05427201B0ADC002AE739 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,10 +189,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MBProgressHUDSwift/Pods-MBProgressHUDSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LBTAComponents/LBTAComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBTAComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92B3227201C86B600BE4D13 /* Hud.swift in Sources */,
+				C92B3223201C7D6900BE4D13 /* HudsController.swift in Sources */,
+				C92B3225201C81F500BE4D13 /* HudCell.swift in Sources */,
 				C9D05424201B0ADC002AE739 /* ViewController.swift in Sources */,
 				C9D05422201B0ADC002AE739 /* AppDelegate.swift in Sources */,
 			);
@@ -225,14 +235,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9D05425201B0ADC002AE739 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9D05426201B0ADC002AE739 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C9D0542A201B0ADC002AE739 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
