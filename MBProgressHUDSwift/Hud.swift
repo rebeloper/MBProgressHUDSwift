@@ -6,7 +6,8 @@
 //  Copyright © 2018 Alex Nagy. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import MBProgressHUD
 
 class Hud {
   
@@ -36,25 +37,25 @@ class Hud {
     self.action = action
   }
   
-  static func runHud(_ action: HudAction) {
+  static func runHud(_ action: HudAction, onView: UIView) {
     print("Running hud action:", action)
     switch action {
     case .indeterminateExample:
-      indeterminateExample()
+      indeterminateExample(onView: onView)
     case .labelExample:
-      labelExample()
+      labelExample(onView: onView)
     case .detailsLabelExample:
-      detailsLabelExample()
+      detailsLabelExample(onView: onView)
     case .determinateExample:
-      determinateExample()
+      determinateExample(onView: onView)
     case .annularDeterminateExample:
-      annularDeterminateExample()
+      annularDeterminateExample(onView: onView)
     case .barDeterminateExample:
-      barDeterminateExample()
+      barDeterminateExample(onView: onView)
     case .textExample:
-      textExample()
+      textExample(onView: onView)
     case .customViewExample:
-      customViewExample()
+      customViewExample(onView: onView)
     case .cancelationExample:
       cancelationExample()
     case .modeSwitchingExample:
@@ -72,36 +73,99 @@ class Hud {
     }
   }
   
-  fileprivate static func indeterminateExample() {
+  fileprivate static func indeterminateExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.mode = .indeterminate
     
+    DispatchQueue.global(qos: .background).async {
+      doSomething()
+      DispatchQueue.main.async {
+        hud.hide(animated: true)
+      }
+    }
   }
   
-  fileprivate static func labelExample() {
+  fileprivate static func labelExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.label.text = "Loading..."
     
+    DispatchQueue.global(qos: .background).async {
+      doSomething()
+      DispatchQueue.main.async {
+        hud.hide(animated: true)
+      }
+    }
   }
   
-  fileprivate static func detailsLabelExample() {
+  fileprivate static func detailsLabelExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.label.text = "Loading..."
+    hud.detailsLabel.text = "Processing\n1/1"
     
+    DispatchQueue.global(qos: .background).async {
+      doSomething()
+      DispatchQueue.main.async {
+        hud.hide(animated: true)
+      }
+    }
   }
   
-  fileprivate static func determinateExample() {
+  fileprivate static func determinateExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.mode = .determinate
+    hud.label.text = "Loading..."
     
+    DispatchQueue.global(qos: .background).async {
+      doSomethingWithProgress(in: hud)
+      DispatchQueue.main.async {
+        hud.hide(animated: true)
+      }
+    }
   }
   
-  fileprivate static func annularDeterminateExample() {
+  fileprivate static func annularDeterminateExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.mode = .annularDeterminate
+    hud.label.text = "Loading..."
     
+    DispatchQueue.global(qos: .background).async {
+      doSomethingWithProgress(in: hud)
+      DispatchQueue.main.async {
+        hud.hide(animated: true)
+      }
+    }
   }
   
-  fileprivate static func barDeterminateExample() {
+  fileprivate static func barDeterminateExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.mode = .determinateHorizontalBar
+    hud.label.text = "Loading..."
     
+    DispatchQueue.global(qos: .background).async {
+      doSomethingWithProgress(in: hud)
+      DispatchQueue.main.async {
+        hud.hide(animated: true)
+      }
+    }
   }
   
-  fileprivate static func textExample() {
+  fileprivate static func textExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.mode = .text
+    hud.label.text = "Message here!"
+    hud.offset = CGPoint(x: 0.0, y: MBProgressMaxOffset)
     
+    hud.hide(animated: true, afterDelay: 3)
   }
   
-  fileprivate static func customViewExample() {
+  fileprivate static func customViewExample(onView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: onView, animated: true)
+    hud.mode = .customView
+    hud.label.text = "Success"
+    hud.isSquare = true
+    hud.customView = UIImageView(image: #imageLiteral(resourceName: "Checkmark"))
     
+    hud.hide(animated: true, afterDelay: 3)
   }
   
   fileprivate static func cancelationExample() {
@@ -131,4 +195,46 @@ class Hud {
   fileprivate static func colorExample() {
     
   }
+  
+  // MARK: Tasks
+  
+  fileprivate static func doSomething() {
+    sleep(5)
+  }
+  
+  fileprivate static func doSomethingWithProgress(in hud: MBProgressHUD) {
+    var progress:Float = 0.0
+    while progress < 1.0 {
+      progress += 0.1
+      DispatchQueue.main.async {
+        hud.progress = progress
+      }
+      usleep(50000)
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
