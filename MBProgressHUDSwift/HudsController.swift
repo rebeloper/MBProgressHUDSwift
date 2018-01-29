@@ -75,7 +75,8 @@ class HudsController: UICollectionViewController, UICollectionViewDelegateFlowLa
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     guard let view = navigationController?.view else { return }
-    Hud.runHud(huds[indexPath.section][indexPath.row].action, onView: view)
+    guard let window = view.window else { return }
+    Hud.runHud(huds[indexPath.section][indexPath.row].action, onView: view, onWindow: window)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
