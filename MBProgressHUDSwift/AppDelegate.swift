@@ -20,10 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.makeKeyAndVisible()
     
 //    let vc = ViewController()
-    let layout = UICollectionViewFlowLayout()
-    let collectionViewController =  HudsController(collectionViewLayout: layout)
-    let navController = UINavigationController(rootViewController: collectionViewController)
-    window?.rootViewController = navController
+//    let layout = UICollectionViewFlowLayout()
+//    let collectionViewController =  HudsController(collectionViewLayout: layout)
+//    let navController = UINavigationController(rootViewController: collectionViewController)
+//    window?.rootViewController = navController
+    
+    let vc = ViewController()
+    window?.rootViewController = vc
     
     return true
   }
